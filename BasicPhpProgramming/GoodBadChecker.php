@@ -1,49 +1,81 @@
 <?php
 class GoodBadChecker
 {
-    public $itsBob = "Im Bob";
-    public $itsSue = "Im Sue";
-    public $itsRasmus = "Im not Bob, im Rasmus Lerdorf! haha";
+    public $itsBob = "Im Bob\n";
+    public $itsSue = "Im Sue\n";
+    public $itsRasmus = "Im Rasmus Lerdorf! haha";
 
-    function __construct()
+    public function __construct()
     {
         echo "\n****************************\nProcess Initiating\n****************************\n ";
 
     }
 
-    function __destruct()
+    public function __destruct()
     {
         echo "\n****************************\nProcess Complete\n****************************\n";
     }
 
-    function bob()
+    public function bob()
     {
-        echo $this->itsBob."\n";
-        echo "bob?\n";
-
+        return $this->itsBob;
     }
 
-    function sue()
+    public function sue()
     {
-        echo $this->itsSue."\n";
-        echo "sue?\n";
-
+        return $this->itsSue;
     }
-}
-class IsGoodBad extends GoodBadChecker
-{
 
     public function rasmus()
     {
-        echo $this->itsRasmus."\n";
-        echo "phew, no rasmus\n";
-    }
-
-    public function hitList()
-    {
-        echo "Fetching list process system...\n\n";
-        $this->createList();
+        return $this->itsRasmus;
     }
 }
+
+class IsGoodBad extends GoodBadChecker
+{
+    public function __construct()
+    {
+        echo "Calling parent constructor...\n\n";
+        parent::__construct();
+    }
+
+//Next Project - random output
+//    public function randomOutName()
+//    {
+//        $names = array($this->bob(), $this->sue(), $this->rasmus());
+//        $randName = array_rand($names, 1);
+//        echo $names[$randName[0]];
+//    }
+//
+   public function startupIsGoodBad()
+    {
+        echo "Initiating\n";
+    }
+
+    public function getBob()
+    {
+        return $this->bob();
+    }
+
+    public function getSue()
+    {
+        return $this->sue();
+    }
+
+    public function getRasmus()
+    {
+        return $this->rasmus();
+    }
+
+
+}
 $GoodBadCheck = new IsGoodBad();
-//echo $GoodBadCheck->rasmus();
+echo "\nCalling Object...\n";
+echo $GoodBadCheck->startupIsGoodBad();
+//echo $GoodBadCheck->randomOutName();
+
+echo $GoodBadCheck->getBob();
+echo $GoodBadCheck->getSue();
+echo $GoodBadCheck->getRasmus();
+
